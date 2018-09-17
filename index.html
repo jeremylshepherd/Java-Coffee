@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  Jeremy L. Shepherd</title>
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+
+<header id="header" class="df aic">
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle-label">
+      <span class="bar top"></span>
+      <span class="bar mid"></span>
+      <span class="bar bottom"></span>
+    </label>
+  <nav id="nav-bar" class="df fdr aic jcb">
+    <div class="df aic jcc brand">
+      <img id="header-img" src="https://melbournechapter.net/images/coffee-mug-clipart-black-and-white-3.png" alt="coffee cup">
+      <h3>Java Coffee</h3>
+    </div>
+    <ul>
+      <li><a href="#about" class="nav-link">ABOUT US</a></li>
+      <li><a href="#ourcoffee" class="nav-link">OUR COFFEE</a></li>
+      <li><a href="#signup" class="nav-link">SIGN UP</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="df fdc aic jcb">
+  <section id="about">
+    <figure>
+      <video src="http://jeremylshepherd.github.io/assets/Coffee%20Machine%20Dispensing%20Coffee.mp4"
+        type="video/mp4" id="video" poster="https://static-videos.pexels.com/videos/853761/pictures/preview-14.jpg" controls></video>
+      <div id="controls" class="df aic jcb">
+        <button id="play"><i class="fa fa-play"></i></button>
+        <button id="stop"><i class="fa fa-stop"></i></button>
+        <progress id="progress" min="0" value="0" >
+          <div id="bar">
+            <span></span>
+          </div>          
+        </progress>
+        <input id="vol" type="range" min="0" max="1" step="0.1">
+        <button id="mute"><i class="fa fa-volume-off"></i></button>
+        <button id="full"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+      </div>
+    </figure>
+  </section>
+  <section id="ourcoffee" class="df fdc aic jcb">
+    <h2>Our Coffee</h2>
+    <p>Qui a aged, acerbic, qui latte, ut extra black, galão, cup blue mountain java viennese, irish crema to go café au lait trifecta, that a id turkish wings. Coffee crema robusta aromatic turkish aromatic id, shop, con panna aged arabica, qui single shot
+      ristretto body sweet froth. Saucer body cultivar mug shop carajillo, white at dripper, at con panna cup sweet ristretto cortado. French press, medium barista breve, shop that mocha, brewed, eu aftertaste so con panna doppio seasonal cup turkish
+      flavour saucer. Single shot, iced, mazagran, coffee pumpkin spice siphon macchiato, cup whipped that pumpkin spice instant mazagran doppio mocha variety siphon. Dark froth robusta extraction mazagran a latte instant filter, doppio iced pumpkin spice,
+      cup bar barista mazagran, foam as beans cortado in barista. To go skinny kopi-luwak, body qui bar, flavour single origin saucer, fair trade crema grinder dripper beans, foam grounds body cortado single shot. Coffee a doppio, americano that percolator
+      cup aftertaste dripper aftertaste single shot, roast whipped, est café au lait sit mazagran est iced dripper saucer. Arabica coffee latte, organic shop extraction saucer cream that ut body java decaffeinated, dark saucer, beans instant aged to go
+      whipped con panna body.</p>
+  </section>
+  <section id="signup" class="df fdr aic jcc">
+    <form id="form" class="df fdc aic jcb" action="https://www.freecodecamp.com/email-submit">
+      <div>
+        <h4>Subscribe to learn more and receive our latest offers!</h4>
+      </div>
+      <div><input type="email" id="email" name="email" placeholder="Enter your email" value=""></div>
+      <input id="submit" type="submit" value="Subscribe">
+    </form>
+  </section>
+</main>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

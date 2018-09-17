@@ -1,0 +1,80 @@
+const $ = (tag) => document.querySelector(tag);
+
+let vid = $('#video');
+let play = $('#play');
+let playIcon = $('#play i');
+let stop = $('#stop');
+let progress = document.getElementById('progress');
+let bar = $('#bar');
+let vol = $('#vol');
+let mute = $('#mute');
+let muteIcon = $('#mute i');
+let full = $('#full');
+
+vid.controls = false;
+
+const playPause = (e, ve, pb) => {
+  if(ve.paused || ve.ended) {
+    ve.play();
+    pb.setAttribute('class', 'fa fa-pause');
+  }else{
+    ve.pause();
+    pb.setAttribute('class', 'fa fa-play');
+  }
+}
+
+const stopPlay = (e, ve, pb, prog) => {
+  pb.setAttribute('class', 'fa fa-play');
+  ve.pause();
+  ve.currentTime = 0;
+  prog.value = 0;
+};
+
+const volChange = (e, vol, ve, mi) => {
+  ve.volume = vol.value;
+  if(ve.volume === 0)  mi.setAttribute('class', 'fa fa-volume-off');
+  else  mi.setAttribute('class', 'fa fa-volume-up');
+}
+
+const muteVolume = (e, ve, mi) => {
+  ve.muted = !ve.muted;
+  let state = ve.muted ? 'off' : ve.volume <= 0 ?  'off' : 'up';
+  mi.setAttribute('class', `fa fa-volume-${state}`);
+};
+
+const setMax = (e, ve, progress) => {
+  progress.setAttribute('max', ve.duration);
+};
+
+const updateBar = (e, ve, progress, bar) => {
+  if (!progress.getAttribute('max')) progress.setAttribute('max', ve.duration);
+  progress.value = ve.currentTime;
+  bar.style.width = Math.floor((ve.currentTime / ve.duration) * 100) + '%';
+}
+
+const detectEnd = (e, ve, pb) => {
+  pb.setAttribute('class', 'fa fa-play');
+  ve.currentTime = 0;
+};
+
+const goToTime = (e, progress, ve) => {
+  let posX = (e.pageX  - progress.offsetLeft) / progress.offsetWidth;
+  ve.currentTime = posX * ve.duration;
+}
+
+const fullScreen = (e, ve) => {
+  if (ve.requestFullscreen) ve.requestFullscreen();
+  else if (ve.mozRequestFullScreen) ve.mozRequestFullScreen();
+  else if (ve.webkitRequestFullScreen) ve.webkitRequestFullScreen();
+  else if (ve.msRequestFullscreen) ve.msRequestFullscreen();
+}
+
+play.addEventListener('click', (e) => playPause(e, vid, playIcon));
+stop.addEventListener('click', (e) => stopPlay(e, vid, playIcon, progress));
+vol.addEventListener('change', (e) => volChange(e, vol, vid, muteIcon));
+mute.addEventListener('click', (e) =>  muteVolume(e, vid, muteIcon));
+vid.addEventListener('loadedmetadata', (e) => setMax(e, vid, progress));
+vid.addEventListener('timeupdate', (e) => updateBar(e, vid, progress, bar));
+vid.addEventListener('ended', (e) => detectEnd(e, vid, playIcon));
+progress.addEventListener('click', (e) => goToTime(e, progress, vid));
+full.addEventListener('click', (e) => fullScreen(e, vid));
